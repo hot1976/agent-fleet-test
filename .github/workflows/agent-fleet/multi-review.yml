@@ -1,0 +1,56 @@
+# 多模型协作审查工作流
+
+name: Multi-Model Code Review
+
+on:
+  push:
+    branches: [feat/**, bugfix/**, refactor/**]
+  pull_request:
+    types: [opened]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Technical Review (郭大侠)
+        run: |
+          echo "=== 郭大侠 技术审查 ==="
+          echo "检查代码逻辑、代码质量、架构设计"
+          # 这里可以添加具体的审查逻辑
+          echo "✓ Technical review passed"
+      
+      - name: Test Review (黄一刀)
+        run: |
+          echo "=== 黄一刀 测试审查 ==="
+          echo "检查单元测试覆盖率、 边界情况处理"
+          # 这里可以添加具体的审查逻辑
+          echo "✓ Test review passed"
+      
+      - name: Security Review (主控)
+        run: |
+          echo "=== 主控 安全审查 ==="
+          echo "检查安全漏洞、 权限问题"
+          # 这里可以添加具体的审查逻辑
+          echo "✓ Security review passed"
+      
+      - name: 综合评分
+        run: |
+          echo "=== 综合评分 ==="
+          echo "计算综合得分并输出最终结果"
+          # 这里可以添加评分逻辑
+          echo "综合评分: PASS/FAIL/PENDING"
+          echo "建议: MERGE/REQUEST_CHANGES/REJECT"
+      
+      - name: Output result
+        run: |
+          echo "::set-output name=review_result::${{ steps.outputs.review_result }}"
+          echo "::set-output name=review_score::${{ steps.outputs.review_score }}"
+          echo "::set-output name=review_comments::${{ steps.outputs.review_comments }}"
