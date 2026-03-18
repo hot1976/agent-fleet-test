@@ -1,0 +1,12 @@
+{
+  "name": "agent-fleet-test",
+  "version": "1.0.0",
+  "description": "测试仓库 - Agent 舰队系统功能验证",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+    "build": "tsc",
+    "prepare": "husky install"
+  }
+}
