@@ -6,8 +6,7 @@
     "test": "vitest run",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "build": "tsc",
-    "prepare": "husky install"
+    "build": "tsc"
   },
   "devDependencies": {
     "vitest": "^1.2.0",
