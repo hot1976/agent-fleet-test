@@ -3,7 +3,7 @@
 **Issue ID:** 47059388-8102-4c56-bc72-53c49fa514f8
 
 **Trigger:** Comment Reply
-**Triggering comment ID:** `15530512-c6c8-46da-8c64-334744a720f3`
+**Triggering comment ID:** `f32bca86-08b2-45d5-b1cd-55d757e0c3a7`
 
 ## Quick Start
 

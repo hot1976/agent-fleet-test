@@ -1,0 +1,64 @@
+# 自动清理工作流
+
+name: Agent Fleet Cleanup
+
+on:
+  schedule:
+    # 每天凌晨 2 点执行清理
+    - cron: '0 2 * * *'
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Clean up old worktrees
+        run: |
+          echo "=== 清理已合并的 worktree ==="
+          
+          # 蟥找已合并的分支
+          MERGED_BRANCHES=$(git branch --merged | grep -v "*` | cut -d` | awk '{print $2}')
+          
+          # 清理对应的 worktree
+          for BRANCH in $MERGED_BRANCHES; do
+            WORKTREE_PATH="../worktrees/$BRANCH"
+            if [ -d "$WORKTREE_PATH" ]; then
+              echo "清理 worktree: $BRANCH"
+              git worktree remove "$WORKTREE_PATH" --force
+            fi
+          done
+          
+          echo "=== 清理完成 ==="
+      
+      - name: Clean up old tasks
+        run: |
+          echo "=== 归档已完成任务 ==="
+          
+          # 归档 30 天前的已完成任务
+          ARCHIVE_DATE=$(date -d "-30days" --date +%Y-%m-%d)
+          
+          # 创建归档目录
+          mkdir -p .clawdbot/archive
+          
+          # 移动旧任务到归档
+          OLD_TASKS=$(cat .clawdbot/active-tasks.json | jq '.tasks[] | jq --arg 'map select(select(.status == "done" and .completedAt < $ARCHIVE_DATE)')
+          
+          if [ -n "$OLD_TASKS" ]; then
+            ARCHIVE_FILE=".clawdbot/archive/tasks-$(date +%Y%m-%d).json"
+            echo "$OLD_TASKS" > "$ARCHIVE_FILE"
+            echo "归档了 $(echo "$OLD_TASKS" | jq 'length') 个任务"
+          fi
+      
+      - name: Clean up old branches
+        run: |
+          echo "=== 清理已合并的远程分支 ==="
+          
+          # 蟥找已合并的远程分支
+          git branch -r | grep -v 'origin' | awk '{print $1}'
+          
+          # 删除本地分支（可选)
+          # git branch -D <branch> 2>/dev/null
+          
+          echo "=== 清理完成 ==="

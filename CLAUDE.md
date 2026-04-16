@@ -51,8 +51,8 @@ The checkout command creates a git worktree with a dedicated branch. You can che
 1. Run `multica issue get 47059388-8102-4c56-bc72-53c49fa514f8 --output json` to understand the issue context
 2. Run `multica issue comment list 47059388-8102-4c56-bc72-53c49fa514f8 --output json` to read the conversation
    - If the output is very large or truncated, use pagination: `--limit 30` to get the latest 30 comments, or `--since <timestamp>` to fetch only recent ones
-3. Find the triggering comment (ID: `15530512-c6c8-46da-8c64-334744a720f3`) and understand what is being asked — do NOT confuse it with previous comments
-4. Reply: `multica issue comment add 47059388-8102-4c56-bc72-53c49fa514f8 --parent 15530512-c6c8-46da-8c64-334744a720f3 --content "..."`
+3. Find the triggering comment (ID: `f32bca86-08b2-45d5-b1cd-55d757e0c3a7`) and understand what is being asked — do NOT confuse it with previous comments
+4. Reply: `multica issue comment add 47059388-8102-4c56-bc72-53c49fa514f8 --parent f32bca86-08b2-45d5-b1cd-55d757e0c3a7 --content "..."`
 5. If the comment requests code changes or further work, do the work first, then reply with your results
 6. Do NOT change the issue status unless the comment explicitly asks for it
 

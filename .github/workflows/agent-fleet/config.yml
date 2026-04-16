@@ -1,0 +1,10 @@
+# Ralph Loop 配置
+memory:
+  enabled: true
+  storage_path: .ralph-loop/memory.json
+  max_entries: 100
+
+# 学习模式
+learning_mode: passive  # passive, active, strict
+record_threshold: 0.7  # 只记录成功的 Prompt
+
