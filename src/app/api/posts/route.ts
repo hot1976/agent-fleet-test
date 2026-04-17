@@ -95,7 +95,7 @@ export async function POST(request: Request) {
         {
           success: false,
           error: '数据验证失败',
-          details: error.errors,
+          details: (error as z.ZodError).issues,
         },
         { status: 400 }
       )

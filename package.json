@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Next.js 16+ 全栈框架 - 前后端分离架构，支持 PostgreSQL 和 Redis",
   "private": false,
-  "keywords": ["nextjs", "fullstack", "prisma", "redis", "postgresql"],
+  "keywords": [
+    "nextjs",
+    "fullstack",
+    "prisma",
+    "redis",
+    "postgresql"
+  ],
   "author": "hot1976",
   "license": "MIT",
   "scripts": {
@@ -20,7 +26,7 @@
     "db:seed": "prisma db seed"
   },
   "dependencies": {
-    "@prisma/client": "^7.7.0",
+    "@prisma/client": "6.19.3",
     "@tanstack/react-query": "^5.99.0",
     "ioredis": "^5.10.1",
     "next": "16.2.4",
@@ -37,7 +43,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "prisma": "^7.7.0",
+    "prisma": "6.19.3",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^1.2.0"
