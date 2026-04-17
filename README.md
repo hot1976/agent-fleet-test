@@ -24,28 +24,41 @@
 
 ## 📁 项目结构
 
+本项目采用**前后端完全分离**的架构设计，详细说明请查看 [架构文档](./docs/ARCHITECTURE.md)。
+
+### 快速预览
+
 ```
 ├── prisma/
 │   └── schema.prisma          # 数据库模型定义
 ├── src/
-│   ├── app/                   # Next.js App Router
-│   │   ├── api/              # API 路由
-│   │   │   └── posts/        # 文章 API 示例
-│   │   └── page.tsx          # 主页
-│   ├── components/           # UI 组件
-│   ├── lib/                  # 工具函数
-│   │   ├── api.ts           # API 客户端
-│   │   ├── prisma.ts        # Prisma 客户端
-│   │   └── redis.ts         # Redis 客户端
-│   ├── server/              # 后端代码
-│   │   ├── api/            # API 路由逻辑
-│   │   ├── services/       # 业务逻辑
-│   │   ├── models/         # 数据模型
-│   │   └── db/             # 数据库连接
-│   └── types/              # TypeScript 类型
-├── .env.example            # 环境变量模板
+│   ├── frontend/              # 前端应用
+│   │   ├── modules/          # 业务模块（posts、auth、user等）
+│   │   ├── shared/           # 前端共享资源
+│   │   └── app/              # Next.js App Router入口
+│   ├── backend/              # 后端服务
+│   │   ├── modules/          # 业务服务（posts、auth、user等）
+│   │   ├── shared/           # 后端共享资源
+│   │   └── api/              # API路由入口
+│   └── shared/               # 前后端共享代码
+├── docs/                      # 项目文档
+│   ├── ARCHITECTURE.md       # 架构设计文档
+│   ├── MIGRATION.md          # 迁移指南
+│   └── STRUCTURE.md          # 目录结构详解
 └── package.json
 ```
+
+### 架构特点
+
+- **前端模块化**：按业务功能组织模块，每个模块包含组件、hooks、services和types
+- **后端服务化**：按业务领域组织服务，每个服务包含services、controllers、dto和validators
+- **完全分离**：前后端代码在物理目录上完全隔离，职责清晰
+- **易于维护**：目录结构清晰，便于团队协作和代码维护
+
+详细文档：
+- 📖 [完整架构设计](./docs/ARCHITECTURE.md)
+- 🔄 [迁移指南](./docs/MIGRATION.md)
+- 📂 [目录结构详解](./docs/STRUCTURE.md)
 
 ## 🛠️ 快速开始
 
