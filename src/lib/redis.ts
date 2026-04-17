@@ -11,8 +11,6 @@ export const redis =
     port: Number(process.env.REDIS_PORT) || 6379,
     password: process.env.REDIS_PASSWORD || undefined,
     maxRetriesPerRequest: 3,
-    retryDelayOnFailover: 100,
-    enableReadyCheck: true,
   })
 
 if (process.env.NODE_ENV !== 'production') globalForRedis.redis = redis
